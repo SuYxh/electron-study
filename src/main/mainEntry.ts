@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import { CustomScheme } from "./CustomScheme";
 import { CommonWindowEvent } from "./CommonWindowEvent";
+import { Updater } from "./Updater";
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "true";
 
@@ -31,6 +32,7 @@ app.whenReady().then(() => {
   } else {
     CustomScheme.registerScheme();
     mainWindow.loadURL(`app://index.html`);
+    Updater.check();
   }
 
   CommonWindowEvent.listen();
